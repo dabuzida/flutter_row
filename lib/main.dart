@@ -34,23 +34,16 @@ class AAA extends StatefulWidget {
 }
 
 class _AAAState extends State<AAA> {
-  bool _switch = true;
-
+  List x = ['aaa', 'bbb', 'ccc'];
+  String i = 'aaaa';
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        TextButton(
-          onPressed: () {
-            _switch = !_switch;
-            setState(() {});
-          },
-          child: const Text('참 거짓 전환 버튼'),
-        ),
         Container(
             child: (() {
-          if (_switch) {
-            return Text('not row widget');
+          if (x.contains(i)) {
+            return Text('including');
           } else {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.center,
