@@ -26,77 +26,51 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class AAA extends StatelessWidget {
+class AAA extends StatefulWidget {
   const AAA({Key? key}) : super(key: key);
 
   @override
+  State<AAA> createState() => _AAAState();
+}
+
+class _AAAState extends State<AAA> {
+  bool _switch = true;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.indigo, width: 2),
-      ),
-      child: Row(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        // mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(width: 50),
-          Expanded(
-            flex: 1,
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              color: Colors.amber,
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              color: Colors.blue,
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              color: Colors.red,
-              constraints: BoxConstraints(
-                minWidth: 50,
-                maxWidth: 130,
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              color: Colors.green,
-            ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              color: Colors.purple,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              width: double.infinity,
-              height: 50,
-              color: Colors.teal,
-            ),
-          ),
-          SizedBox(width: 50),
-        ],
-      ),
+    return Row(
+      children: <Widget>[
+        TextButton(
+          onPressed: () {
+            _switch = !_switch;
+            setState(() {});
+          },
+          child: const Text('참 거짓 전환 버튼'),
+        ),
+        Container(
+            child: (() {
+          if (_switch) {
+            return Text('not row widget');
+          } else {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(width: 50),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.amber,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.blue,
+                ),
+              ],
+            );
+          }
+        }())),
+      ],
     );
   }
 }
