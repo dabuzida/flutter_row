@@ -38,32 +38,34 @@ class _AAAState extends State<AAA> {
   String i = 'aaaa';
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-            child: (() {
-          if (x.contains(i)) {
-            return Text('including');
-          } else {
-            return Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(width: 50),
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.amber,
-                ),
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.blue,
-                ),
-              ],
-            );
-          }
-        }())),
-      ],
+    return Container(
+      decoration: BoxDecoration(border: Border.all(color: Colors.red)),
+      width: 700,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.amber,
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.red,
+          ),
+          // Container(
+          //   width: 100,
+          //   height: 100,
+          //   color: Colors.amber,
+          // ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.blue,
+          ),
+        ],
+      ),
     );
   }
 }
